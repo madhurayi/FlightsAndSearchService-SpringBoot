@@ -16,8 +16,8 @@ public class CityController {
         this.cityService = cityService;
     }
     @GetMapping
-    public ResponseEntity<?> getAllCities() {
-        return ResponseEntity.ok(cityService.getAllCities());
+    public ResponseEntity<?> getAllCities(@RequestParam(required = false,name = "name") String city) {
+        return ResponseEntity.ok(cityService.getAllCities(city));
     }
 
     @GetMapping("/{id}")

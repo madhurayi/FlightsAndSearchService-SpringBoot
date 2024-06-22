@@ -14,8 +14,11 @@ public class CityService {
         this.cityRepository = cityRepository;
     }
 
-    public List<City> getAllCities() {
-        return cityRepository.findAll();
+    public List<City> getAllCities(String cityName) {
+        if(cityName==null){
+            return cityRepository.findAll();
+        }
+        return cityRepository.findCitiesByNameContainingIgnoreCase(cityName);
     }
 
     public Optional<City> getCityById(long id) {
